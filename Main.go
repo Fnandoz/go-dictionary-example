@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 )
+
 func main() {
 	fmt.Print("Enter a word: ")
 	var input string
@@ -21,9 +22,10 @@ func main() {
 			return nil
 		},
 	}
-	url := "https://owlbot.info/api/v4/dictionary/" + searchWord.Word
-	req, err := http.NewRequest("GET", url, nil)
+
+	req, err := http.NewRequest("GET", "https://owlbot.info/api/v4/dictionary/", nil)
 	req.Header.Add("Authorization", "Token f95ba2b2e035519d6ce737d859afb923195e88fa")
+	req.URL.Path += searchWord.Word
 
 	resp, err := client.Do(req)
 	if err != nil {
