@@ -24,6 +24,9 @@ func main() {
 	}
 
 	req, err := http.NewRequest("GET", "https://owlbot.info/api/v4/dictionary/", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 	req.Header.Add("Authorization", "Token f95ba2b2e035519d6ce737d859afb923195e88fa")
 	req.URL.Path += searchWord.Word
 
